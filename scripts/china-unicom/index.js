@@ -6,7 +6,7 @@ const sendServer = require("../../thirdpart/serverChan");
 const daySigninUrl = "https://activity.10010.com/sixPalaceGridTurntableLottery/signin/daySign";
 
 // 获取 cookie 值
-const cookieValue = process.env.CHINA_UNICOM_SIGNIN_COOKIE;
+const cookieValue = process.env.CHINA_UNICOM_SIGNIN_COOKIE?.trim();
 
 class UnicomSign {
   constructor(headers) {
@@ -22,9 +22,10 @@ class UnicomSign {
     const { code, data: signData, desc } = data;
     if (code == "0000") {
       const { redSignMessage } = signData
+      console.log(">>>联通签到成功！", `抽奖奖励：${redSignMessage}`);
       sendServer(`${this.msgTitle}：成功`, `抽奖奖励：${redSignMessage}`);
     } else {
-      console.log(">>>签到失败！", desc);
+      console.log(">>>联通签到失败！", desc);
       sendServer(`${this.msgTitle}：失败`, desc);
     }
   }

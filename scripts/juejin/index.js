@@ -3,8 +3,8 @@ const axios = require("axios");
 const sendServer = require("../../thirdpart/serverChan");
 
 // 获取 cookie 值
-const cookieValue = process.env.JUEJIN_COOKIE;
-const appendUrl = process.env.JUEJIN_APPEND_URL;
+const cookieValue = process.env.JUEJIN_COOKIE?.trim();
+const appendUrl = process.env.JUEJIN_APPEND_URL?.trim();
 
 // 签到url
 const checkInUrl = `https://api.juejin.cn/growth_api/v1/check_in?${ appendUrl }`;
