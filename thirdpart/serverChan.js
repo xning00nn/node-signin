@@ -16,9 +16,9 @@ const sendServer = async (title, content) => {
   // console.log("serverContent", serverContent);
   const { status } = await axios.post(serverUrl, serverContent);
   if (status == 200) {
-    console.log(">>>新版Server酱消息推送成功");
+    console.log("✓ 新版Server酱消息推送成功");
   } else {
-    console.log(">>>新版Server酱消息推送失败");
+    console.log("✗ 新版Server酱消息推送失败");
   }
 };
 

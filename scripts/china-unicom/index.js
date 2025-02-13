@@ -22,10 +22,10 @@ class UnicomSign {
     const { code, data: signData, desc } = data;
     if (code == "0000") {
       const { redSignMessage } = signData
-      console.log(">>>联通签到成功！", `抽奖奖励：${redSignMessage}`);
+      console.log("✓ 联通签到成功！", `抽奖奖励：${redSignMessage}`);
       sendServer(`${this.msgTitle}：成功`, `抽奖奖励：${redSignMessage}`);
     } else {
-      console.log(">>>联通签到失败！", desc);
+      console.log("✗ 联通签到失败！", desc);
       sendServer(`${this.msgTitle}：失败`, desc);
     }
   }
@@ -45,5 +45,5 @@ if (cookieValue) {
   const unicom = new UnicomSign(headers);
   unicom.daysign();
 } else {
-  console.log("执行中断，环境变量未配置：CHINA_UNICOM_SIGNIN_COOKIE");
+  console.log("✗ 执行中断，环境变量未配置：CHINA_UNICOM_SIGNIN_COOKIE");
 }

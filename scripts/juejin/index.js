@@ -29,7 +29,7 @@ class JuejinSign {
       const { incr_point } = juejinData;
       this.lottery(incr_point);
     } else {
-      console.log(">>>签到失败！", err_msg);
+      console.log(`✗ ${this.msgTitle}：失败`, err_msg);
       sendServer(`${this.msgTitle}：失败`, err_msg);
     }
   }
@@ -52,7 +52,7 @@ class JuejinSign {
         sendServer(`${this.msgTitle}：成功`, award);
       }
     } else {
-      console.log(">>>抽奖失败！", err_msg);
+      console.log("✗ 掘金抽奖失败！", err_msg);
       sendServer(`掘金抽奖：失败`, err_msg);
     }
   }
@@ -71,5 +71,5 @@ if (cookieValue) {
   const juejin = new JuejinSign(headers);
   juejin.checkIn();
 } else {
-  console.log("执行中断，环境变量未配置：JUEJIN_COOKIE、JUEJIN_APPEND_URL");
+  console.log("✗ 执行中断，环境变量未配置：JUEJIN_COOKIE、JUEJIN_APPEND_URL");
 }
